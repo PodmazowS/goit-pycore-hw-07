@@ -34,13 +34,16 @@ def add_contact(args, book: AddressBook):
     
     name, phone, *_ = args
     record = book.find(name)
-    message = f"Contact {name} updated."
+    message = "Contact updated."
+    
     if record is None:
         record = Record(name)
-        book.add_record(record)
-        message = f"Contact {name} added."
-    if phone:
         record.add_phone(phone)
+        book.add_record(record)
+        return "Contact added"
+    
+    record.add_phone(phone)
+    
     return message
 
 

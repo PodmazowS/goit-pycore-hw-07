@@ -96,7 +96,12 @@ class AddressBook(UserDict):
         
 
         for record, info in self.data.items():
+            
+            if info.birthday == None:
+                continue
+                
             persons_birthday = info.birthday.value
+                
             
             birthday_this_year = persons_birthday.replace(year=current_date.year)
             
